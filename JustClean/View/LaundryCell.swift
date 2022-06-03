@@ -30,7 +30,7 @@ final class LaundryCell: BaseTableViewCell {
         return label
     }()
     
-    var model: V1.Laundry? {
+    var model: V2.Laundry? {
         didSet {
             setUpData()
         }

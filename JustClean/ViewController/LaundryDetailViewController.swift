@@ -9,7 +9,7 @@
 import UIKit
 
 class LaundryDetailController: UIViewController {
-    var model: V1.Laundry?
+    var model: V2.Laundry?
     var quantity = 0
     var quantityDictionary = [String: Int]()
     lazy var tableView: UITableView = {
@@ -88,7 +88,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item: V1.LaundryItem? = model?.items[indexPath.row]
+        let item: V2.LaundryItem? = model?.items[indexPath.row]
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: LaundryItemCell.self)
 
         cell.model = item
@@ -98,7 +98,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
 
     //add quantity by the name of the item
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item: V1.LaundryItem? = model?.items[indexPath.row]
+        let item: V2.LaundryItem? = model?.items[indexPath.row]
         let value = quantityDictionary[item?.name ?? ""] ?? 0
         let addValue = value + 1
         quantityDictionary[item?.name ?? ""] = addValue
@@ -110,7 +110,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let item: V1.LaundryItem? = model?.items[indexPath.row]
+        let item: V2.LaundryItem? = model?.items[indexPath.row]
         let modifyAction = UIContextualAction(style: .normal, title: "Delete", handler: { [weak self] (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
 
             if let value = self?.quantityDictionary[item?.name ?? ""], value > 0 {

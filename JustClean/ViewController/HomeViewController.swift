@@ -12,8 +12,8 @@ class HomeViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
         tableView.accessibilityIdentifier = "tableView"
-//        tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(LaundryCell.self, forCellReuseIdentifier: LaundryCell.reuseIdentifier)
         // Long Press
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
 
             } else if longPressGesture.state == UIGestureRecognizer.State.began {
                 print("Long press on row, at \(indexPath!.row)")
-                let model: V1.Laundry? = list?[indexPath!.row]
+                let model: V2.Laundry? = list?[indexPath!.row]
                 preView.isHidden = false
                 if let photo = model?.photo {
                     preView.image = UIImage(named: photo)
@@ -47,10 +47,10 @@ class HomeViewController: UIViewController {
     }
     
     //combine favorites and notFavorites together,show favorites as higher priority
-    var list: [V1.Laundry]? {
-        var finalData = [V1.Laundry]()
-        let favorites = try? JustClean.dataStack.fetchAll(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$favorite == true }))
-        let notFavorites = try? JustClean.dataStack.fetchAll(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$favorite == false }))
+    var list: [V2.Laundry]? {
+        var finalData = [V2.Laundry]()
+        let favorites = try? JustClean.dataStack.fetchAll(From<V2.Laundry>(), Where<V2.Laundry>({ $0.$favorite == true }))
+        let notFavorites = try? JustClean.dataStack.fetchAll(From<V2.Laundry>(), Where<V2.Laundry>({ $0.$favorite == false }))
         if let favorites = favorites {
             finalData.append(contentsOf: favorites)
         }
@@ -91,14 +91,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model: V1.Laundry? = list?[indexPath.row]
+        let model: V2.Laundry? = list?[indexPath.row]
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: LaundryCell.self)
         cell.model = model
         return cell
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model: V1.Laundry? = list?[indexPath.row]
+        let model: V2.Laundry? = list?[indexPath.row]
         let ctrl = LaundryDetailController()
         ctrl.model = model
         self.navigationController?.pushViewController(ctrl, animated: true)
@@ -108,12 +108,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let model: V1.Laundry? = list?[indexPath.row]
+        let model: V2.Laundry? = list?[indexPath.row]
         let name = model?.name
         let modifyAction = UIContextualAction(style: .normal, title: "Favorite", handler: { (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
 
             JustClean.dataStack.perform(asynchronous: { transaction in
-                                            let laundry = try transaction.fetchOne(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$name == name }))
+                                            let laundry = try transaction.fetchOne(From<V2.Laundry>(), Where<V2.Laundry>({ $0.$name == name }))
                                             if let favorite = laundry?.favorite {
                                                 laundry?.favorite = !favorite
                                             }

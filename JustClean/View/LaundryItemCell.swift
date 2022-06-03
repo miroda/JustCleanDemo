@@ -11,7 +11,7 @@ import SnapKit
 import UIKit
 
 final class LaundryItemCell: BaseTableViewCell {
-    var model: V1.LaundryItem? {
+    var model: V2.LaundryItem? {
         didSet {
             setUpData()
         }
