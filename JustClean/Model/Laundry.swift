@@ -26,7 +26,8 @@ enum V1 {
             var name: String?
          @Field.Stored("photo")
             var photo: String?
-
+         @Field.Stored("favorite")
+            var favorite: Bool = false
          @Field.Relationship("items", inverse: \.$master)
              var items: Array<LaundryItem>
 
@@ -37,9 +38,6 @@ enum V1 {
      final class LaundryData:CoreStoreObject {
          @Field.Stored("code")
             var code: Int?
-         
-         @Field.Stored("favorite")
-            var favorite: Bool = false
          
          @Field.Stored("status")
             var status: String?
@@ -67,7 +65,8 @@ enum V2 {
            var name: String?
         @Field.Stored("photo")
            var photo: String?
-
+        @Field.Stored("favorite")
+           var favorite: Bool = false
         @Field.Relationship("items", inverse: \.$master)
             var items: Array<LaundryItem>
 
@@ -101,10 +100,7 @@ enum V2 {
     class LaundryData:CoreStoreObject {
         @Field.Stored("code")
            var code: Int?
-        
-        @Field.Stored("favorite")
-           var favorite: Bool = false
-        
+
         @Field.Relationship("data", inverse: \.$master)
             var data: LaundryDetail?
     }
@@ -123,8 +119,8 @@ enum JustClean {
                     Entity<V1.LaundryData>("LaundryData"),
                     Entity<V1.LaundryItem>("LaundryItem")
                 ],
-                versionLock: [
-                    "Laundry": [0x54e325a76c6e6e1, 0xc55cac3e61f0e384, 0xb982feb7c6e2548a, 0xa6a7db59e9b43874],
+                versionLock:  [
+                    "Laundry": [0x2ccef5b9c2ccd8ef, 0x6313e37b6691ccc0, 0xd22c9a3709e3d494, 0x71803a7723aaf47],
                     "LaundryData": [0x732f9a0f8966e5f, 0x843b503f365e4caa, 0xd0b3c809ed68ef56, 0xafd9ce676d91d49e],
                     "LaundryItem": [0x6b542efaca11071c, 0x2c3e3161b92b9235, 0xff5cec77db5a9315, 0x86eb7b83b7b950b0]
                 ]
@@ -138,12 +134,13 @@ enum JustClean {
                     Entity<V2.LaundryDetail>("LaundryDetail"),
                     Entity<V2.LaundryFailure>("LaundryFailure")
                 ],versionLock: [
-                    "Laundry": [0xf7fbd805db29e401, 0x4714c8833e940811, 0x1fd20897826bc84, 0x6034c6f1ef489bc4],
+                    "Laundry": [0xe1370fb4bf417cf0, 0x7dde45c981b852a3, 0xbb040bd7fb510b6d, 0x8b27931ef73a0583],
                     "LaundryData": [0x4b7fb62f9ec88d07, 0xf260324721bdc65f, 0x1f7a4419c3987c61, 0xe4d847b0789dfe15],
                     "LaundryDetail": [0x6dc76a425d5cd8f5, 0xc0c9a3e99c2dbe2d, 0x892463d1d1618071, 0xc17618c25b33695],
                     "LaundryFailure": [0x113287c6d0670de3, 0x4201139a462a37cc, 0xf938948ed0283c6a, 0x323c9741fe705307],
                     "LaundryItem": [0x6b542efaca11071c, 0x2c3e3161b92b9235, 0xff5cec77db5a9315, 0x86eb7b83b7b950b0]
                 ]
+
 
             ),
             migrationChain: ["V1"]
