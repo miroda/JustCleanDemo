@@ -16,6 +16,14 @@ CoreStore was (and is) heavily shaped by real-world needs of developing data-dep
 
 Regarding to SUPER easy Migration process, I decide to use it.
 
+
+
+### Git Structure
+
+V1 means first version before data model restructure.
+
+V2 means second version after data model restructure.
+
 How to Migration from V1 to V2?
 
 ```swift
