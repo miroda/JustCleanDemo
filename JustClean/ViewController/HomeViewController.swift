@@ -22,14 +22,23 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+//        mockData()
         setSubView()
+        
+        perform(#selector(testData), with: nil, afterDelay: 1)
+    }
+    
+   @objc func testData()  {
+        let list = try? JustClean.dataStack.fetchAll(From<V1.LaundryData>())
+       let data = list?.last
+       print(data?.code)
     }
 
     func setSubView() {
         view.addSubview(tableView)
     }
 
+ 
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
