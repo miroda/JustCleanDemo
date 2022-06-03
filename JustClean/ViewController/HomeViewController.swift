@@ -12,8 +12,8 @@ class HomeViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
         tableView.accessibilityIdentifier = "tableView"
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         tableView.register(LaundryCell.self, forCellReuseIdentifier: LaundryCell.reuseIdentifier)
         // Long Press
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        mockData()
+        mockData()
         setSubView()
     }
 

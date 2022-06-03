@@ -143,7 +143,7 @@ enum JustClean {
 
 
             ),
-            migrationChain: ["V1"]
+            migrationChain: ["V1","V2"]
         )
         
         /**
