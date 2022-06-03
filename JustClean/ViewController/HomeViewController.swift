@@ -104,9 +104,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-//        let recordModel = vm.records[indexPath.row]
-//        showCommentReplay(model: recordModel)
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model: V1.Laundry? = list?[indexPath.row]
+        let ctrl = LaundryDetailController()
+        ctrl.model = model
+        self.navigationController?.pushViewController(ctrl, animated: true)
     }
 
     func tableView(_: UITableView,

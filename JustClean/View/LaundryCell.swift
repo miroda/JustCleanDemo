@@ -21,14 +21,12 @@ final class LaundryCell: BaseTableViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.accessibilityIdentifier = "nickNameLabel"
-        label.isUserInteractionEnabled = true
         return label
     }()
     
     private lazy var favoriteLabel: UILabel = {
         let label = UILabel()
         label.accessibilityIdentifier = "favoriteLabel"
-        label.isUserInteractionEnabled = true
         return label
     }()
     

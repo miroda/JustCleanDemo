@@ -227,6 +227,7 @@
 		0EFEF79B2848E25000F7ED47 /* LaundryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7972848E25000F7ED47 /* LaundryCell.swift */; };
 		0EFEF79E2848E26300F7ED47 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF79D2848E26300F7ED47 /* UITableView+Reusable.swift */; };
 		0EFEF7A12848FF2000F7ED47 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7A02848FF2000F7ED47 /* MockData.swift */; };
+		0EFEF7A32849FCF800F7ED47 /* LaundryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7A22849FCF800F7ED47 /* LaundryItemCell.swift */; };
 		A19803F61935B70F14C67F84 /* Pods_JustClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C7B4D90736B13E3895E1B7 /* Pods_JustClean.framework */; };
 /* End PBXBuildFile section */
 
@@ -455,6 +456,7 @@
 		0EFEF7972848E25000F7ED47 /* LaundryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryCell.swift; sourceTree = "<group>"; };
 		0EFEF79D2848E26300F7ED47 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		0EFEF7A02848FF2000F7ED47 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		0EFEF7A22849FCF800F7ED47 /* LaundryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryItemCell.swift; sourceTree = "<group>"; };
 		67C7B4D90736B13E3895E1B7 /* Pods_JustClean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustClean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6ECDD54A8EA2D5960B3C6FD /* Pods-JustClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustClean.debug.xcconfig"; path = "Target Support Files/Pods-JustClean/Pods-JustClean.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F5A81B4499B9EDCDC6CA1E /* Pods-JustClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustClean.release.xcconfig"; path = "Target Support Files/Pods-JustClean/Pods-JustClean.release.xcconfig"; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 			children = (
 				0EFEF7962848E25000F7ED47 /* BaseTableViewCell.swift */,
 				0EFEF7972848E25000F7ED47 /* LaundryCell.swift */,
+				0EFEF7A22849FCF800F7ED47 /* LaundryItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -782,7 +785,6 @@
 				B6ECDD54A8EA2D5960B3C6FD /* Pods-JustClean.debug.xcconfig */,
 				C0F5A81B4499B9EDCDC6CA1E /* Pods-JustClean.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1063,6 +1065,7 @@
 				0EFEF6DF2848E1B500F7ED47 /* KeyPathGenericBindings.swift in Sources */,
 				0EFEF75F2848E1B500F7ED47 /* CSUnsafeDataModelSchema.swift in Sources */,
 				0EFEF7572848E1B500F7ED47 /* Internals.DiffableDataSourceSnapshot.swift in Sources */,
+				0EFEF7A32849FCF800F7ED47 /* LaundryItemCell.swift in Sources */,
 				0EFEF7812848E1B500F7ED47 /* Field.Virtual.swift in Sources */,
 				0EFEF7682848E1B500F7ED47 /* NSManagedObject+DynamicModel.swift in Sources */,
 				0EFEF6E22848E1B500F7ED47 /* GroupBy.swift in Sources */,

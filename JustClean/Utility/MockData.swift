@@ -24,6 +24,14 @@ func mockData() {
                                         } else {
                                             laundry.photo = "laundry2"
                                         }
+                                        var laundryItems = [V1.LaundryItem]()
+                                        for index in 0...5 {
+                                            let item = transaction.create(Into<V1.LaundryItem>())
+                                            item.name = "laundryItem\(index)"
+                                            item.price = Double(index)*2
+                                            laundryItems.append(item)
+                                        }
+                                        laundry.items = laundryItems
                                         laundrys.append(laundry)
                                     }
                                     data.data = laundrys
