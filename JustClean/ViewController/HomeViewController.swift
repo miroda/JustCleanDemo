@@ -45,13 +45,8 @@ class HomeViewController: UIViewController {
             preView.isHidden = true
         }
     }
-
-    var data: V1.LaundryData? {
-        // get the latest one or we can use a filter here to get certain one
-        let laundryData = try? JustClean.dataStack.fetchAll(From<V1.LaundryData>()).last
-        return laundryData
-    }
-
+    
+    //combine favorites and notFavorites together,show favorites as higher priority
     var list: [V1.Laundry]? {
         var finalData = [V1.Laundry]()
         let favorites = try? JustClean.dataStack.fetchAll(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$favorite == true }))
@@ -92,15 +87,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return data?.data.count ?? 0
+        return list?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model: V1.Laundry? = list?[indexPath.row]
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: LaundryCell.self)
-
         cell.model = model
-
         return cell
     }
 
@@ -111,6 +104,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         self.navigationController?.pushViewController(ctrl, animated: true)
     }
 
+    //add laundry as favorite
     func tableView(_: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {

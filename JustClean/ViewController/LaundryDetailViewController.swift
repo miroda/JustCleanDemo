@@ -46,7 +46,7 @@ class LaundryDetailController: UIViewController {
 extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
-
+        //Laundry name
         let label = UILabel()
         headerView.addSubview(label)
         label.snp.makeConstraints { make in
@@ -57,7 +57,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
         label.text = model?.name ?? ""
         label.font = .systemFont(ofSize: 16)
         label.textColor = .red
-
+        //Laundry shop picture
         let laundryImageView = UIImageView()
         headerView.addSubview(laundryImageView)
         laundryImageView.snp.makeConstraints { make in
@@ -96,6 +96,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    //add quantity by the name of the item
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item: V1.LaundryItem? = model?.items[indexPath.row]
         let value = quantityDictionary[item?.name ?? ""] ?? 0
@@ -105,6 +106,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
         
     }
 
+    //Delete quantity by the name of the item
     func tableView(_: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
