@@ -15,8 +15,36 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LaundryCell.self, forCellReuseIdentifier: LaundryCell.reuseIdentifier)
+        // Long Press
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.5
+        tableView.addGestureRecognizer(longPressGesture)
         return tableView
     }()
+
+    lazy var preView = UIImageView()
+
+    @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
+        // start preview
+        if longPressGesture.state == .began {
+            let p = longPressGesture.location(in: tableView)
+            let indexPath = tableView.indexPathForRow(at: p)
+            if indexPath == nil {
+                print("Long press on table view, not row.")
+
+            } else if longPressGesture.state == UIGestureRecognizer.State.began {
+                print("Long press on row, at \(indexPath!.row)")
+                let model: V1.Laundry? = list?[indexPath!.row]
+                preView.isHidden = false
+                if let photo = model?.photo {
+                    preView.image = UIImage(named: photo)
+                }
+            }
+        } else if longPressGesture.state == .ended {
+            // close preview
+            preView.isHidden = true
+        }
+    }
 
     var data: V1.LaundryData? {
         // get the latest one or we can use a filter here to get certain one
@@ -47,6 +75,14 @@ class HomeViewController: UIViewController {
     func setSubView() {
         title = "JustClean"
         view.addSubview(tableView)
+
+        view.addSubview(preView)
+        preView.isHidden = true
+        preView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(200)
+        }
     }
 }
 

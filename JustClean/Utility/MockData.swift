@@ -30,7 +30,8 @@ func mockData() {
                                 },
                                 completion: { result in
                                     switch result {
-                                    case .success: print("success!")
+                                    case .success:
+                                        print("success!")
                                     case let .failure(error): print(error)
                                     }
                                 })
