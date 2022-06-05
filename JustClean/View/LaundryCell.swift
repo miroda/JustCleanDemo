@@ -12,6 +12,8 @@ import SnapKit
 
 final class LaundryCell: BaseTableViewCell {
     
+    
+    
     private lazy var laundryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -30,7 +32,7 @@ final class LaundryCell: BaseTableViewCell {
         return label
     }()
     
-    var model: V1.Laundry? {
+    var model: Laundry? {
         didSet {
             setUpData()
         }

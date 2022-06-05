@@ -9,9 +9,13 @@
 import UIKit
 
 class LaundryDetailController: UIViewController {
-    var model: V1.Laundry?
+    var model: Laundry?
     var quantity = 0
     var quantityDictionary = [String: Int]()
+
+    var items:[LaundryItem]? {
+        return model?.items?.allObjects as? [LaundryItem]
+    }
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
         tableView.accessibilityIdentifier = "tableView"
@@ -46,7 +50,7 @@ class LaundryDetailController: UIViewController {
 extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
-        //Laundry name
+        // Laundry name
         let label = UILabel()
         headerView.addSubview(label)
         label.snp.makeConstraints { make in
@@ -57,7 +61,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
         label.text = model?.name ?? ""
         label.font = .systemFont(ofSize: 16)
         label.textColor = .red
-        //Laundry shop picture
+        // Laundry shop picture
         let laundryImageView = UIImageView()
         headerView.addSubview(laundryImageView)
         laundryImageView.snp.makeConstraints { make in
@@ -84,11 +88,11 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return model?.items.count ?? 0
+        return items?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item: V1.LaundryItem? = model?.items[indexPath.row]
+        let item: LaundryItem? = items?[indexPath.row]
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: LaundryItemCell.self)
 
         cell.model = item
@@ -96,21 +100,21 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
-    //add quantity by the name of the item
+    // add quantity by the name of the item
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item: V1.LaundryItem? = model?.items[indexPath.row]
+        let item: LaundryItem? = items?[indexPath.row]
+        item?.price
         let value = quantityDictionary[item?.name ?? ""] ?? 0
         let addValue = value + 1
         quantityDictionary[item?.name ?? ""] = addValue
         updateUpRightButton()
-        
     }
 
-    //Delete quantity by the name of the item
+    // Delete quantity by the name of the item
     func tableView(_: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let item: V1.LaundryItem? = model?.items[indexPath.row]
+        let item: LaundryItem? = items?[indexPath.row]
         let modifyAction = UIContextualAction(style: .normal, title: "Delete", handler: { [weak self] (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
 
             if let value = self?.quantityDictionary[item?.name ?? ""], value > 0 {

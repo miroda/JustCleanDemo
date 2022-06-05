@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Laundry" representedClassName="Laundry" syncable="YES" codeGenerationType="class">
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="String"/>
+        <relationship name="detail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LaundryDetail" inverseName="success" inverseEntity="LaundryDetail"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LaundryItem" inverseName="laundry" inverseEntity="LaundryItem"/>
+    </entity>
+    <entity name="LaundryData" representedClassName="LaundryData" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="data" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LaundryDetail" inverseName="data" inverseEntity="LaundryDetail"/>
+    </entity>
+    <entity name="LaundryDetail" representedClassName="LaundryDetail" syncable="YES" codeGenerationType="class">
+        <relationship name="data" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LaundryData" inverseName="data" inverseEntity="LaundryData"/>
+        <relationship name="failure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LaundryFailure" inverseName="detail" inverseEntity="LaundryFailure"/>
+        <relationship name="success" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Laundry" inverseName="detail" inverseEntity="Laundry"/>
+    </entity>
+    <entity name="LaundryFailure" representedClassName="LaundryFailure" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="detail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LaundryDetail" inverseName="failure" inverseEntity="LaundryDetail"/>
+    </entity>
+    <entity name="LaundryItem" representedClassName="LaundryItem" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="laundry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Laundry" inverseName="items" inverseEntity="Laundry"/>
+    </entity>
+    <elements>
+        <element name="Laundry" positionX="-341.0559692382812" positionY="21.5341796875" width="128" height="119"/>
+        <element name="LaundryData" positionX="43.865234375" positionY="0.32427978515625" width="128" height="59"/>
+        <element name="LaundryItem" positionX="-144.5570068359375" positionY="279.8633117675781" width="128" height="88"/>
+        <element name="LaundryFailure" positionX="98.3338623046875" positionY="188.8598022460938" width="128" height="74"/>
+        <element name="LaundryDetail" positionX="-141.48388671875" positionY="-50.04132080078125" width="128" height="74"/>
+    </elements>
+</model>
