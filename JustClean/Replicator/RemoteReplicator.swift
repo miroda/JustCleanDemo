@@ -91,7 +91,7 @@ class RemoteReplicator: ReplicatorProtocol {
         DispatchQueue.global(qos: .userInitiated).async {
             let context = CoreDataManager.shared.backgroundContext
             context.performAndWait {
-                if let laundryList = jsonResult?.object?["data"] {
+                if let laundryList = jsonResult?.object?["data"]?.object?["success"] {
                     if let array = laundryList.array {
                         for data in array {
                             let laundry = NSEntityDescription.insertNewObject(forEntityName: EntityTypes.laundry.rawValue, into: context) as! Laundry

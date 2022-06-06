@@ -56,8 +56,8 @@ class HomeViewController: UIViewController {
         setSubView()
 
         // remove duplicate data
-        LaundryAPI.sharedInstance.deleteAllLaundrys()
-        RemoteReplicator.sharedInstance.fetchData()
+//        LaundryAPI.sharedInstance.deleteAllLaundrys()
+//        RemoteReplicator.sharedInstance.fetchData()
     }
 
     @objc func updateEventTableData() {

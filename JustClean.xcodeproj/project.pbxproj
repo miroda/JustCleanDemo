@@ -641,7 +641,7 @@
 				0EFEF7A7284CC93500F7ED47 /* JustClean V2.xcdatamodel */,
 				0EFEF7A5284CC56D00F7ED47 /* JustClean.xcdatamodel */,
 			);
-			currentVersion = 0EFEF7A5284CC56D00F7ED47 /* JustClean.xcdatamodel */;
+			currentVersion = 0EFEF7A7284CC93500F7ED47 /* JustClean V2.xcdatamodel */;
 			path = JustClean.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
