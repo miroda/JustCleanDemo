@@ -62,7 +62,7 @@ final class LaundryCell: BaseTableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(laundryImageView.snp.right).offset(10)
             make.centerY.equalToSuperview()
-            make.width.equalTo(150)
+            make.width.equalTo(250)
             make.height.equalTo(25)
         }
         

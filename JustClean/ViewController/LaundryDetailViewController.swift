@@ -55,7 +55,7 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
         headerView.addSubview(label)
         label.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(5)
-            make.width.equalTo(150)
+            make.width.equalTo(250)
             make.height.equalTo(20)
         }
         label.text = model?.name ?? ""
@@ -103,7 +103,6 @@ extension LaundryDetailController: UITableViewDataSource, UITableViewDelegate {
     // add quantity by the name of the item
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item: LaundryItem? = items?[indexPath.row]
-        item?.price
         let value = quantityDictionary[item?.name ?? ""] ?? 0
         let addValue = value + 1
         quantityDictionary[item?.name ?? ""] = addValue

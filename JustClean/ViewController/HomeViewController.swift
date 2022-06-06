@@ -45,26 +45,25 @@ class HomeViewController: UIViewController {
             preView.isHidden = true
         }
     }
-    
-    //combine favorites and notFavorites together,show favorites as higher priority
+
     var list: [Laundry]? {
-        var finalData = [Laundry]()
-//        let favorites = try? JustClean.dataStack.fetchAll(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$favorite == true }))
-//        let notFavorites = try? JustClean.dataStack.fetchAll(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$favorite == false }))
-//        if let favorites = favorites {
-//            finalData.append(contentsOf: favorites)
-//        }
-//        if let notFavorites = notFavorites {
-//            finalData.append(contentsOf: notFavorites)
-//        }
-        return finalData
+        return LaundryAPI.sharedInstance.getAllLaundrys()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        mockData()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateEventTableData), name: .updateEventTableData, object: nil)
         setSubView()
+
+        // remove duplicate data
+        LaundryAPI.sharedInstance.deleteAllLaundrys()
+        RemoteReplicator.sharedInstance.fetchData()
+    }
+
+    @objc func updateEventTableData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 
     func setSubView() {
@@ -98,35 +97,26 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let model: V1.Laundry? = list?[indexPath.row]
-//        let ctrl = LaundryDetailController()
-//        ctrl.model = model
-//        self.navigationController?.pushViewController(ctrl, animated: true)
+        let model: Laundry? = list?[indexPath.row]
+        let ctrl = LaundryDetailController()
+        ctrl.model = model
+        self.navigationController?.pushViewController(ctrl, animated: true)
     }
 
-    //add laundry as favorite
+    // add laundry as favorite
     func tableView(_: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-//        let model: V1.Laundry? = list?[indexPath.row]
-//        let name = model?.name
-//        let modifyAction = UIContextualAction(style: .normal, title: "Favorite", handler: { (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
-//
-//            JustClean.dataStack.perform(asynchronous: { transaction in
-//                                            let laundry = try transaction.fetchOne(From<V1.Laundry>(), Where<V1.Laundry>({ $0.$name == name }))
-//                                            if let favorite = laundry?.favorite {
-//                                                laundry?.favorite = !favorite
-//                                            }
-//                                        },
-//                                        completion: { [weak self] _ in
-//                                            self?.tableView.reloadData()
-//                                        })
-//
-//            success(true)
-//        })
-//        modifyAction.image = UIImage(named: "hammer")
-//        modifyAction.backgroundColor = .blue
+        let model: Laundry? = list?[indexPath.row]
 
-        return UISwipeActionsConfiguration(actions: [])
+        let modifyAction = UIContextualAction(style: .normal, title: "Favorite", handler: { (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
+
+            if let favorite = model?.favorite, let id = model?.id {
+                LaundryAPI.sharedInstance.updateLaundryFavoriteById(id, favorite: !favorite)
+            }
+            success(true)
+        })
+        modifyAction.backgroundColor = .blue
+        return UISwipeActionsConfiguration(actions: [modifyAction])
     }
 }

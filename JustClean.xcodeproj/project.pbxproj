@@ -32,6 +32,12 @@
 		0EFEF7EB284CF0F200F7ED47 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7E4284CF0F200F7ED47 /* UIColor+Random.swift */; };
 		0EFEF7EC284CF0F200F7ED47 /* NSPersistentStoreCoordinator+SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7E6284CF0F200F7ED47 /* NSPersistentStoreCoordinator+SQLite.swift */; };
 		0EFEF7EE284CFDC800F7ED47 /* V1ToV2MapingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7ED284CFDC800F7ED47 /* V1ToV2MapingModel.xcmappingmodel */; };
+		0EFEF7F2284DD61000F7ED47 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7F0284DD61000F7ED47 /* HTTPStatusCode.swift */; };
+		0EFEF7F3284DD61000F7ED47 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7F1284DD61000F7ED47 /* HTTPClient.swift */; };
+		0EFEF7F6284DD6D600F7ED47 /* RemoteReplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7F5284DD6D600F7ED47 /* RemoteReplicator.swift */; };
+		0EFEF7F8284DEB0800F7ED47 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7F7284DEB0800F7ED47 /* JSON.swift */; };
+		0EFEF7FA284DF3D700F7ED47 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7F9284DF3D700F7ED47 /* Notification+Name.swift */; };
+		0EFEF7FC284E075900F7ED47 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFEF7FB284E075900F7ED47 /* Utility.swift */; };
 		A19803F61935B70F14C67F84 /* Pods_JustClean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C7B4D90736B13E3895E1B7 /* Pods_JustClean.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +70,12 @@
 		0EFEF7E4284CF0F200F7ED47 /* UIColor+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		0EFEF7E6284CF0F200F7ED47 /* NSPersistentStoreCoordinator+SQLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+SQLite.swift"; sourceTree = "<group>"; };
 		0EFEF7ED284CFDC800F7ED47 /* V1ToV2MapingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = V1ToV2MapingModel.xcmappingmodel; sourceTree = "<group>"; };
+		0EFEF7F0284DD61000F7ED47 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
+		0EFEF7F1284DD61000F7ED47 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		0EFEF7F5284DD6D600F7ED47 /* RemoteReplicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteReplicator.swift; sourceTree = "<group>"; };
+		0EFEF7F7284DEB0800F7ED47 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		0EFEF7F9284DF3D700F7ED47 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		0EFEF7FB284E075900F7ED47 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		67C7B4D90736B13E3895E1B7 /* Pods_JustClean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustClean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6ECDD54A8EA2D5960B3C6FD /* Pods-JustClean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustClean.debug.xcconfig"; path = "Target Support Files/Pods-JustClean/Pods-JustClean.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F5A81B4499B9EDCDC6CA1E /* Pods-JustClean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustClean.release.xcconfig"; path = "Target Support Files/Pods-JustClean/Pods-JustClean.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +114,8 @@
 		0EFEF5D42848E18700F7ED47 /* JustClean */ = {
 			isa = PBXGroup;
 			children = (
+				0EFEF7F4284DD6C600F7ED47 /* Replicator */,
+				0EFEF7EF284DD60200F7ED47 /* Http */,
 				0EFEF7D3284CF0BE00F7ED47 /* CoreData */,
 				0EFEF79F2848FF0C00F7ED47 /* Utility */,
 				0EFEF79C2848E26300F7ED47 /* Extension */,
@@ -155,6 +169,7 @@
 				0EFEF7E5284CF0F200F7ED47 /* NSPersistentStoreCoordinator */,
 				0EFEF7E2284CF0F200F7ED47 /* UIColor */,
 				0EFEF79D2848E26300F7ED47 /* UITableView+Reusable.swift */,
+				0EFEF7F9284DF3D700F7ED47 /* Notification+Name.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -163,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				0EFEF7A02848FF2000F7ED47 /* MockData.swift */,
+				0EFEF7FB284E075900F7ED47 /* Utility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -218,6 +234,24 @@
 				0EFEF7E6284CF0F200F7ED47 /* NSPersistentStoreCoordinator+SQLite.swift */,
 			);
 			path = NSPersistentStoreCoordinator;
+			sourceTree = "<group>";
+		};
+		0EFEF7EF284DD60200F7ED47 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				0EFEF7F1284DD61000F7ED47 /* HTTPClient.swift */,
+				0EFEF7F0284DD61000F7ED47 /* HTTPStatusCode.swift */,
+				0EFEF7F7284DEB0800F7ED47 /* JSON.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		0EFEF7F4284DD6C600F7ED47 /* Replicator */ = {
+			isa = PBXGroup;
+			children = (
+				0EFEF7F5284DD6D600F7ED47 /* RemoteReplicator.swift */,
+			);
+			path = Replicator;
 			sourceTree = "<group>";
 		};
 		0F9587681AD211EAFEB0DCC3 /* Pods */ = {
@@ -352,11 +386,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFEF7FC284E075900F7ED47 /* Utility.swift in Sources */,
 				0EFEF7EB284CF0F200F7ED47 /* UIColor+Random.swift in Sources */,
+				0EFEF7F8284DEB0800F7ED47 /* JSON.swift in Sources */,
 				0EFEF79A2848E25000F7ED47 /* BaseTableViewCell.swift in Sources */,
+				0EFEF7F3284DD61000F7ED47 /* HTTPClient.swift in Sources */,
 				0EFEF7EE284CFDC800F7ED47 /* V1ToV2MapingModel.xcmappingmodel in Sources */,
 				0EFEF5D62848E18700F7ED47 /* AppDelegate.swift in Sources */,
 				0EFEF7DC284CF0BE00F7ED47 /* CoreDataMigrator.swift in Sources */,
+				0EFEF7FA284DF3D700F7ED47 /* Notification+Name.swift in Sources */,
 				0EFEF79E2848E26300F7ED47 /* UITableView+Reusable.swift in Sources */,
 				0EFEF7982848E25000F7ED47 /* LaundryDetailViewController.swift in Sources */,
 				0EFEF79B2848E25000F7ED47 /* LaundryCell.swift in Sources */,
@@ -364,12 +402,14 @@
 				0EFEF7E7284CF0F200F7ED47 /* FileManager+ApplicationSupport.swift in Sources */,
 				0EFEF7DA284CF0BE00F7ED47 /* CoreDataMigrationStep.swift in Sources */,
 				0EFEF7DB284CF0BE00F7ED47 /* CoreDataMigrationVersion.swift in Sources */,
+				0EFEF7F6284DD6D600F7ED47 /* RemoteReplicator.swift in Sources */,
 				0EFEF7992848E25000F7ED47 /* HomeViewController.swift in Sources */,
 				0EFEF7D9284CF0BE00F7ED47 /* CoreDataManager.swift in Sources */,
 				0EFEF7A32849FCF800F7ED47 /* LaundryItemCell.swift in Sources */,
 				0EFEF7912848E1F600F7ED47 /* Laundry.swift in Sources */,
 				0EFEF7E9284CF0F200F7ED47 /* NSManagedObjectModel+Compatible.swift in Sources */,
 				0EFEF7EA284CF0F200F7ED47 /* UIColor+Hex.swift in Sources */,
+				0EFEF7F2284DD61000F7ED47 /* HTTPStatusCode.swift in Sources */,
 				0EFEF7A12848FF2000F7ED47 /* MockData.swift in Sources */,
 				0EFEF7A6284CC56D00F7ED47 /* JustClean.xcdatamodeld in Sources */,
 				0EFEF7E8284CF0F200F7ED47 /* NSManagedObjectModel+Resource.swift in Sources */,
