@@ -17,8 +17,8 @@ class CoreDataManager {
     lazy var persistentContainer: NSPersistentContainer = {
         let persistentContainer = NSPersistentContainer(name: "JustClean")
         let description = persistentContainer.persistentStoreDescriptions.first
-        description?.shouldInferMappingModelAutomatically = false //inferred mapping will be handled else where
-        description?.shouldMigrateStoreAutomatically = false
+        description?.shouldInferMappingModelAutomatically = true 
+        description?.shouldMigrateStoreAutomatically = true
         description?.type = storeType
         
         return persistentContainer

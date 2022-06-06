@@ -23,6 +23,7 @@ class RemoteReplicator: ReplicatorProtocol {
     fileprivate var httpClient: HTTPClient!
 
     private let justCleanApiV1 = "https://miroda.github.io/Laundry.json"
+    private let justCleanApiV2 = "https://miroda.github.io/LaundryV2.json"
     // Utilize Singleton pattern by instanciating Replicator only once.
     class var sharedInstance: RemoteReplicator {
         enum Singleton {
@@ -45,7 +46,7 @@ class RemoteReplicator: ReplicatorProtocol {
      */
     func fetchData() {
         // Remote resource
-        let request = URLRequest(url: URL(string: justCleanApiV1)!)
+        let request = URLRequest(url: URL(string: justCleanApiV2)!)
 
         httpClient.doGet(request) { data, _, httpStatusCode in
             if httpStatusCode!.rawValue != HTTPStatusCode.ok.rawValue {
