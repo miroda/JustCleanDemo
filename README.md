@@ -87,6 +87,28 @@ enum CoreDataMigrationVersion: String, CaseIterable {
 
 ![WeChat0976353b90fbd321080ef381c1197b20](images/WeChat0976353b90fbd321080ef381c1197b20.png)
 
+5、switch API to v2
+
+```swift
+    private let justCleanApiV1 = "https://miroda.github.io/Laundry.json"
+    private let justCleanApiV2 = "https://miroda.github.io/LaundryV2.json"
+```
+
+6、 perform so called "light migration"
+
+```swift
+    lazy var persistentContainer: NSPersistentContainer = {
+        let persistentContainer = NSPersistentContainer(name: "JustClean")
+        let description = persistentContainer.persistentStoreDescriptions.first
+        description?.shouldInferMappingModelAutomatically = true  //set to true
+        description?.shouldMigrateStoreAutomatically = true //set to true
+        description?.type = storeType
+        
+        return persistentContainer
+    }()
+    
+```
+
 
 
 ##  **Migration Insider**
